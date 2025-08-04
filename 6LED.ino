@@ -3,7 +3,7 @@ extern "C" {
 }
 
 const char port = 'A';
-const char ledPins[6] = {18, 20, 21, 16, 19, 17}; // PA16 to PA21 (adjust per your wiring)
+const char ledPins[6] = {18, 20, 21, 16, 19, 17}; // PA16 to PA21 
 
 int mode = 0;  // 0 = no mode, 1 = Knight Rider, 2 = Catch Me If You Can
 int previousMode = 0; // Track previous mode for reset
@@ -140,9 +140,8 @@ void catchMeIfYouCan() {
     // Clear all LEDs before lighting the new ones
     for (int i = 0; i < 6; i++) Write_GPIO(port, ledPins[i], LOW);
 
-    // Make sure we don't double-light the same pin
     if (cmLeftIndex == cmRightIndex) {
-      Write_GPIO(port, ledPins[cmLeftIndex], HIGH);  // only light once
+      Write_GPIO(port, ledPins[cmLeftIndex], HIGH);  
     } else {
       Write_GPIO(port, ledPins[cmLeftIndex], HIGH);
       Write_GPIO(port, ledPins[cmRightIndex], HIGH);
